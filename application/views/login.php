@@ -98,7 +98,6 @@
 
 	<script>
 		$(document).ready(function(){
-
 			// SHOW PASSWORD
 			const showPassword = document.querySelector('#show-password');
 			const password = document.querySelector('#password');

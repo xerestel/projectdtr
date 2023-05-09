@@ -22,6 +22,7 @@ class Main extends CI_Controller {
     }
 
 	public function index(){
+        // session_destroy();
 		if (isset($_SESSION['user']['employee_id'])) {
             $data['db_id'] = $_SESSION['user']['db_id'];
             $data['employee_id'] = $_SESSION['user']['employee_id'];
