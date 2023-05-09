@@ -128,7 +128,8 @@ div#sidebarView nav.navbar a.w-100 {
 }
 
 div#sidebarView nav.navbar a.w-100.active {
-    color: #000 !important;
+    color: rgb(44, 13, 247) !important;
+    font-size: 1.25em !important;
 }
 
 div#sidebarView .content .navbar {
@@ -136,8 +137,8 @@ div#sidebarView .content .navbar {
 }
 
 div#sidebarView .content {
-    /* background-image: url("../assets/drone.jpg") !important; */
-    background-color: gray !important;
+    background-image: url("../assets/time.jpg") !important;
+    /* background-color: gray !important; */
 }
 
 div#sidebarView img#riceLyticsLogo {

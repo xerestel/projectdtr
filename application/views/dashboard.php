@@ -27,6 +27,14 @@
         gtag('config', 'G-E2XBB2166Q');
 
     </script> -->
+
+    <style>
+      th {
+        text-align: center;
+        vertical-align: center;
+        font-weight: bold;
+      }
+    </style>
 </head>
 
 <body>
@@ -77,7 +85,7 @@
             <div id="sidebarView" sidebarjs>
               <div class="content">
                 <div id="sidebarToggle" class="text-white" sidebarjs-toggle><i class="bi bi-chevron-left"></i></div>
-                <nav class="navbar flex-column mt-3 text-left">
+                <nav class="navbar flex-column mt-2 text-left">
                   <h4 class="text-white text-left">Menu</h4>
                   <a class="w-100 active mr-2 text-white text-left" href="#" role="button">Personal DTR</a>
                   <a class="w-100 mr-2 text-white text-left" href="#" role="button">Personal DTR Analytics</a>
@@ -87,8 +95,6 @@
                     <a class="w-100 mr-2 text-white text-left" href="#" role="button">Active User Accounts</a>
                     <a class="w-100 mr-2 text-white text-left" href="#" role="button">Archived User Accounts</a>
                   <?php } ?>
-                </nav>
-                <nav class="navbar flex-column">
                   <a class="w-100 mr-2 text-white text-left" href="#" role="button">Change Password</a>
                   <a class="w-100 mr-2 text-white text-left" href="<?php echo base_url(); ?>main/logout" role="button">Logout</a>
                 </nav>
@@ -109,7 +115,7 @@
                     <!-- <a class="btn btn-warning text-white" href="<?php echo base_url(); ?>" role="button"><i class="bi bi-house-door-fill"></i> National</a> -->
                     <h2>Daily Time Record</h2>
                     <?php if (isset($employee_id)) { ?>
-                      <div class="text-right mt-2" style="margin-left: 1550px !important;">
+                      <div class="text-right mt-2" style="margin-left: 1350px !important;">
                         <h5>Hello, <b><?php echo $first_name; ?></b></h5>
                       </div>
                     <?php } ?>
@@ -124,22 +130,22 @@
                 <div class="row">
                   <div class="col-md-12">
                     <!-- Variety Group -->
-                    <div class="row mt-3 ml-5 mr-4">
+                    <div class="row mt-3 ml-5 mr-5">
                         <div class="col-5">
                             <!-- Month -->
                             <select id="month" name="month" class="border rounded pass-label" style="text-align-last: center; height: 40px; width: 150px;" data-live-search="true">
-                                <option value="January">January</option>
-                                <option value="February">February</option>
-                                <option value="March">March</option>
-                                <option value="April">April</option>
-                                <option value="May">May</option>
-                                <option value="June">June</option>
-                                <option value="July">July</option>
-                                <option value="August">August</option>
-                                <option value="September">September</option>
-                                <option value="October">October</option>
-                                <option value="November">November</option>
-                                <option value="December">December</option>
+                                <option value="January" <?php if ($month == '01'){  echo "selected"; } ?>>January</option>
+                                <option value="February" <?php if ($month == '02'){  echo "selected"; } ?>>February</option>
+                                <option value="March" <?php if ($month == '03'){  echo "selected"; } ?>>March</option>
+                                <option value="April" <?php if ($month == '04'){  echo "selected"; } ?>>April</option>
+                                <option value="May" <?php if ($month == '05'){  echo "selected"; } ?>>May</option>
+                                <option value="June" <?php if ($month == '06'){  echo "selected"; } ?>>June</option>
+                                <option value="July" <?php if ($month == '07'){  echo "selected"; } ?>>July</option>
+                                <option value="August" <?php if ($month == '08'){  echo "selected"; } ?>>August</option>
+                                <option value="September" <?php if ($month == '09'){  echo "selected"; } ?>>September</option>
+                                <option value="October" <?php if ($month == '10'){  echo "selected"; } ?>>October</option>
+                                <option value="November" <?php if ($month == '11'){  echo "selected"; } ?>>November</option>
+                                <option value="December" <?php if ($month == '12'){  echo "selected"; } ?>>December</option>
                             </select>
 
                             <!-- Year -->
@@ -154,13 +160,13 @@
                         </div>
 
                         <div class="col-5">
-											    <button class="btn btn-secondary" type="button" id="loginBtn">Print DTR Table</button>
-                          <button class="btn btn-secondary" type="button" id="loginBtn">Print DTR Form</button>
+											    <button class="btn btn-secondary" type="button" id="printDtrTable">Print DTR Table</button>
+                          <button class="btn btn-secondary" type="button" id="printDtrForm">Print DTR Form</button>
                         </div>
 
                         <div class="col-2">
-											    <button class="btn btn-secondary" type="button" id="loginBtn">Time In</button>
-                          <button class="btn btn-secondary" type="button" id="loginBtn">Time Out</button>
+											    <button class="btn btn-secondary" type="button" id="timeInBtn">Time In</button>
+                          <button class="btn btn-secondary" type="button" id="timeOutBtn">Time Out</button>
                         </div>
                     </div>
                   </div>
@@ -174,30 +180,37 @@
                         <table class="table table-bordered" style="background-color: #fff;">
                           <thead style="background-color: #D3D3D3;">
                             <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">First</th>
-                              <th scope="col">Last</th>
-                              <th scope="col">Handle</th>
+                              <th scope="col" rowspan="2" style="width: 5%;  vertical-align: middle;">Date</th>
+                              <th scope="col" colspan="2">Morning</th>
+                              <th scope="col" colspan="2">Afternoon</th>
+                              <th scope="col" rowspan="2" style="vertical-align: middle;">Day</th>
+                              <th scope="col" rowspan="2" style="width: 50%;  vertical-align: middle;">Evaluation</th>
+                            </tr>
+                            <tr>
+                              <th scope="col">Time-in</th>
+                              <th scope="col">Time-out</th>
+                              <th scope="col">Time-in</th>
+                              <th scope="col">Time-out</th>
                             </tr>
                           </thead>
+
                           <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Jacob</td>
-                              <td>Thornton</td>
-                              <td>@fat</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td colspan="2">Larry the Bird</td>
-                              <td>@twitter</td>
-                            </tr>
+                            <?php for ($x = 1; $x <= $days; $x++) { ?>
+                              <?php $day = date('D', strtotime("{$year}-{$month}-{$x}")); ?>
+                              <?php if ($day == "Sun" || $day == "Sat") {?>
+                                <tr style="background-color: #d3d3d3;">
+                              <?php } else { ?>
+                                <tr>
+                              <?php } ?>
+                                <th scope="row"><?php echo $x; ?></th>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td style="text-align: center";><?php echo $day; ?></td>
+                                <td></td>
+                              </tr>
+                            <?php } ?>
                           </tbody>
                         </table>
                       </div>
@@ -462,8 +475,65 @@
                     </div>
                     <?php echo $footer; ?>
                 </div> -->
+
+                <?php echo date('Y-m-d H:i:s',strtotime('04:19:30pm')); ?>
+                <?php echo date('Y-m-d H:i:s'); ?>
             </main>
         </div>
+    </div>
+
+    <!-- TimeIn Modal -->
+    <div class="modal fade" id="timeInModal" tabindex="-1" aria-labelledby="timeInModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: transparent">
+            <h3 class="modal-title"><b>Time In</b></h3>
+            <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="time_in" method="POST">
+              <div class="form-row">
+                <div class="col-md-12 mb-2">
+                  <input type="text" class="form-control" name="current_time" value=<?php echo date("h:i:sa"); ?> id="current_time" >  
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="captureTimeInBtn">Capture</button>
+            <button type="button" class="btn btn-secondary" id="confirmTimeInBtn">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TimeOut Modal -->
+    <div class="modal fade" id="timeOutModal" tabindex="-1" aria-labelledby="timeOutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: transparent">
+            <h3 class="modal-title"><b>Time Out</b></h3>
+            <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="time_in" method="POST">
+              <div class="form-row">
+                <div class="col-md-12 mb-2">
+                  <input type="text" class="form-control" name="current_time" value=<?php echo date("h:i:sa"); ?> id="current_time" >  
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="captureTimeOutBtn">Capture</button>
+            <button type="button" class="btn btn-secondary" id="confirmTimeOutBtn">Save</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-3.6.0.min.js"></script>
@@ -477,6 +547,79 @@
         $(document).ready(function(){
           $("#year").change(function(){
             alert($('#year').val());
+          });
+
+          $("#timeOutBtn").click(function(){
+            $('#timeOutModal').modal('show');
+          });
+
+          $("#confirmTimeOutBtn").click(function(){
+            var flag = 0;
+            var current_time = $('#current_time').val();
+            var type = 'time_out';
+
+            alert(current_time);
+
+            if (flag == 0) {
+              $.ajax({
+              url: "<?php echo base_url(); ?>dtr/time_in_out",
+              method: 'POST',
+              dataType: "JSON",
+              data: {
+                current_time: current_time, 
+              },
+              success: function (response) {
+                console.log(response);
+                $('#timeInModal').modal('toggle');
+              },
+              error: function (request, status, error) {
+                alert(request.responseText);
+              }
+              });
+            } 
+          });
+
+          $("#timeInBtn").click(function(){
+            $('#timeInModal').modal('show');
+          });
+
+          $("#confirmTimeInBtn").click(function(){
+            var flag = 0;
+            var current_time = $('#current_time').val();
+            var type = 'time_in';
+
+            if (flag == 0) {
+              $.ajax({
+              url: "<?php echo base_url(); ?>dtr/time_in_out",
+              method: 'POST',
+              dataType: "JSON",
+              data: {
+                current_time: current_time, 
+              },
+              success: function (response) {
+                console.log(response);
+                $('#timeInModal').modal('toggle');
+                // if (result['error'] == false){
+                //   // alert("Success!");
+                //   $('#loadingLoginSuccessModal').modal('show');
+                //   setTimeout(function() {
+                //     $('#loadingLoginSuccessModal').modal('hide');
+                //     window.location.href = '<?php echo base_url(); ?>main/index';
+                //   }, 2000);
+                // } else {
+                //   document.getElementById("errorPtag").innerHTML = result['message'];
+                //   $('#errorModal').modal('show');
+
+                //   setTimeout(function() {
+                //     window.location.reload();
+                //   }, 2000);
+                // }
+              },
+              error: function (request, status, error) {
+                alert(request.responseText);
+              }
+              });
+            } 
           });
         });
     </script>
