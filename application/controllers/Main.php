@@ -22,6 +22,8 @@ class Main extends CI_Controller {
     }
 
 	public function index(){
+        date_default_timezone_set('Asia/Manila');
+
         // session_destroy();
 		if (isset($_SESSION['user']['employee_id'])) {
             $data['db_id'] = $_SESSION['user']['db_id'];
@@ -36,6 +38,10 @@ class Main extends CI_Controller {
             // $data['footer'] = $this->load->view('footer', $data, true);
 
             // $data['count'] = 0;
+
+            $data['year'] = date("Y");
+            $data['month'] = date("m"); 
+            $data['days'] = cal_days_in_month(CAL_GREGORIAN, $data['month'], $data['year']);
 
             $this->load->view('dashboard', $data);
         } else {

@@ -11,10 +11,6 @@ class LoginModel extends CI_Model
     }
 
     public function login($id_number, $password){
-        // $this->db->where('user_email', $email);
-        // $this->db->where('is_verified', 1);
-        // $query = $this->db->get('tbl_user_priv');
-
         $data = array();
 
         $this->db->select('*');
