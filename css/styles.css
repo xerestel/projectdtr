@@ -109,33 +109,30 @@ nav#sidebarMenu div.sidebar-sticky {
     overflow-y: auto;
 }
 
-nav#sidebarMenu img#riceLyticsLogo {
-    width: 40px;
-}
-
 div#sidebarView .content {
     height: 100%;
-    padding: 20px 0px;
+    padding: 0px 20px;
+    background-color: transparent !important;
 }
 
 div#sidebarView div#sidebarToggle {
-    padding: 0px 20px;
+    padding: 10px 0px;
 }
 
-
 div#sidebarView nav.navbar a.w-100 {
-    padding: 15px 10px;
-    font-size: 1.25em !important;
+    padding: 5px 5px;
+    font-size: 1em !important;
     text-transform: uppercase;
-    color: #0174e7 !important;
+    color: #fff !important;
+    text-decoration: none;
 }
 
 div#sidebarView nav.navbar a.w-100.active {
-    color: #fe7f00 !important;
+    color: #000 !important;
 }
 
 div#sidebarView .content .navbar {
-    background-color: #171716 !important;
+    background-color: transparent !important;
 }
 
 div#sidebarView .content {

@@ -77,53 +77,133 @@
             <div id="sidebarView" sidebarjs>
               <div class="content">
                 <div id="sidebarToggle" class="text-white" sidebarjs-toggle><i class="bi bi-chevron-left"></i></div>
-                <nav class="navbar flex-column mt-3">
+                <nav class="navbar flex-column mt-3 text-left">
                   <h4 class="text-white text-left">Menu</h4>
-                  <a class=" active mr-2 text-white text-left" href="#" role="button">Personal DTR</a>
-                  <a class="mr-2 text-white text-left" href="#" role="button">Personal DTR Analytics</a>
-                  <a class="mr-2 text-white text-left" href="#" role="button">Employee DTR</a>
-                  <a class="mr-2 text-white text-left" href="#" role="button">Employee DTR Analytics</a>
+                  <a class="w-100 active mr-2 text-white text-left" href="#" role="button">Personal DTR</a>
+                  <a class="w-100 mr-2 text-white text-left" href="#" role="button">Personal DTR Analytics</a>
+                  <?php if ($category != "employee"){?>
+                    <a class="w-100 mr-2 text-white text-left" href="#" role="button">Employee DTR</a>
+                    <a class="w-100 mr-2 text-white text-left" href="#" role="button">Employee DTR Analytics</a>
+                    <a class="w-100 mr-2 text-white text-left" href="#" role="button">Active User Accounts</a>
+                    <a class="w-100 mr-2 text-white text-left" href="#" role="button">Archived User Accounts</a>
+                  <?php } ?>
                 </nav>
                 <nav class="navbar flex-column">
-                  <a class="mr-2 text-white text-left" href="#" role="button">Active User Accounts</a>
-                  <a class="mr-2 text-white text-left" href="#" role="button">Archived User Accounts</a>
-                </nav>
-                <nav class="navbar flex-column">
-                  <a class="mr-2 text-white text-left" href="#" role="button">Change Password</a>
-                  <a class="mr-2 text-white text-left" href="#" role="button">Logout</a>
+                  <a class="w-100 mr-2 text-white text-left" href="#" role="button">Change Password</a>
+                  <a class="w-100 mr-2 text-white text-left" href="<?php echo base_url(); ?>main/logout" role="button">Logout</a>
                 </nav>
               </div>
             </div>
             <nav id="sidebarMenu" class="col d-md-block sidebar collapse">
-                <div class="sidebar-sticky pt-1">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <div id="sidebarToggle" class="text-white" sidebarjs-toggle><i class="bi bi-list"></i></div>
-                        </li>
-                    </ul>
-                </div>
+              <div class="sidebar-sticky pt-1">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <div id="sidebarToggle" class="text-white" sidebarjs-toggle><i class="bi bi-list"></i></div>
+                    </li>
+                </ul>
+              </div>
             </nav>
+
             <main role="main" class="col">
                 <nav class="navbar navbar-expand-lg navbar-light text-white" style="background-color: #4C4E52 !important;">
                     <!-- <a class="btn btn-warning text-white" href="<?php echo base_url(); ?>" role="button"><i class="bi bi-house-door-fill"></i> National</a> -->
                     <h2>Daily Time Record</h2>
                     <?php if (isset($employee_id)) { ?>
-                      <div class="text-right" style="margin-left: 1450px !important;">
+                      <div class="text-right mt-2" style="margin-left: 1550px !important;">
                         <h5>Hello, <b><?php echo $first_name; ?></b></h5>
                       </div>
                     <?php } ?>
                 </nav>
 
-                <!-- <div id="main" class="jumbotron text-center">
-                    <div class="jumbotron-content">
-                        <h2>State of the Rice Sector in the</h2>
-                        <h1>Philippines</h1>
-                        <p class="lead"><i>What is the status of the rice industry?</i> Explore and get insights about the trend of the <br />key performance indicators of rice production, consumption, and market.</p>
-                        <div class="card-note mx-auto rounded-pill bg-light">
-                            <h6 class="text-dark p-1">Population: <strong>110.2 MILLION</strong> (PSA, 2021)</h6>
+                <div class="row">
+                  <div class="col-md-12 ml-3 mt-2">
+                    <h1 style="color: gray; font-size: 32px;">Personal DTR</h1>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- Variety Group -->
+                    <div class="row mt-3 ml-5 mr-4">
+                        <div class="col-5">
+                            <!-- Month -->
+                            <select id="month" name="month" class="border rounded pass-label" style="text-align-last: center; height: 40px; width: 150px;" data-live-search="true">
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+
+                            <!-- Year -->
+                            <select id="year" name="year" class="border rounded pass-label" data-live-search="true" style="text-align-last: center; height: 40px; width: 100px;">
+                                <option value="<?php echo date("Y"); ?>"><?php echo date("Y"); ?></option>
+                                <option value="<?php echo date("Y") - 1; ?>"><?php echo date("Y") - 1; ?></option>
+                                <option value="<?php echo date("Y") - 2; ?>"><?php echo date("Y") - 2; ?></option>
+                                <option value="<?php echo date("Y") - 3; ?>"><?php echo date("Y") - 3; ?></option>
+                                <option value="<?php echo date("Y") - 4; ?>"><?php echo date("Y") - 4; ?></option>
+                                <option value="<?php echo date("Y") - 5; ?>"><?php echo date("Y") - 5; ?></option>
+                            </select>
+                        </div>
+
+                        <div class="col-5">
+											    <button class="btn btn-secondary" type="button" id="loginBtn">Print DTR Table</button>
+                          <button class="btn btn-secondary" type="button" id="loginBtn">Print DTR Form</button>
+                        </div>
+
+                        <div class="col-2">
+											    <button class="btn btn-secondary" type="button" id="loginBtn">Time In</button>
+                          <button class="btn btn-secondary" type="button" id="loginBtn">Time Out</button>
                         </div>
                     </div>
-                </div> -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row mt-3 ml-5 mb-3">
+                      <div class="col-11">
+                        <!-- Table -->
+                        <table class="table table-bordered" style="background-color: #fff;">
+                          <thead style="background-color: #D3D3D3;">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">First</th>
+                              <th scope="col">Last</th>
+                              <th scope="col">Handle</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2</th>
+                              <td>Jacob</td>
+                              <td>Thornton</td>
+                              <td>@fat</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3</th>
+                              <td colspan="2">Larry the Bird</td>
+                              <td>@twitter</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- Body -->
                 <!-- <div class="dashboard">
@@ -393,6 +473,12 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/custom.js"></script>
     <script>
         var sidebarjs = new SidebarJS.SidebarElement();
+
+        $(document).ready(function(){
+          $("#year").change(function(){
+            alert($('#year').val());
+          });
+        });
     </script>
 </body>
 

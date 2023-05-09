@@ -73,4 +73,9 @@ class Main extends CI_Controller {
  
 		echo json_encode($output);
     }
+
+    public function logout(){  
+        $this->session->sess_destroy();  
+        redirect('main/index');  
+    }
 }
